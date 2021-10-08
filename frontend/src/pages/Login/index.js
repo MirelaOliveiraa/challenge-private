@@ -13,9 +13,23 @@ const Login = () => {
   const Direct = async () => {
     const { data } = await LoginServices.list();
     const users = data.data;
-    data.filter((user) => user.)
 
-    //history.push("/list-users");
+    const payload = {
+      email: email,
+      password: senha,
+    };
+
+    await LoginServices.create(payload).then((response) => {
+      // setEmail(response.data);
+      // setSenha(response.data);
+      console.log(response.data);
+    });
+
+    if (token === QpwL5tke4Pnpja7X4) {
+      history.push("/list-users");
+    } else {
+      alert("error");
+    }
   };
 
   return (
@@ -27,6 +41,7 @@ const Login = () => {
           <input
             className="login-input"
             type="email"
+            value={email}
             placeholder="Digite seu email"
             onChange={(event) => setEmail(event.target.value)}
           />
@@ -35,6 +50,7 @@ const Login = () => {
           <input
             className="login-input"
             type="text"
+            value={senha}
             placeholder="Digite sua senha"
             onChange={(event) => setSenha(event.target.value)}
           />
