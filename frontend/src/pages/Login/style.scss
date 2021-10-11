@@ -1,22 +1,19 @@
-section{
+.section-login{
     width: 100%;
     height: 100vh;
-    
+
     display: flex;
-    overflow: hidden;
     flex-direction: column;
     justify-content: center;
     
     .div-login{
-        display: flex;
-        justify-content: center;
-        
-        width: 10%;
-        padding: 5rem;
         margin: 0 auto;
+        
+        width: 30%;
+        padding: 5rem;
         border-radius: 10px;
 
-        background-color: rgb(245, 240, 230);
+        background-color: white;
         box-shadow: rgb(190, 185, 185) 1px 1px 10px;
 
         .login-h1{
@@ -34,7 +31,7 @@ section{
             height: 1.5rem;
             font-size: 14px;
             padding: 1% 1rem;
-            border-radius: 15px;
+            border-radius: 6px;
 
             border: solid 1px rgb(173, 167, 167);
         }
@@ -42,16 +39,17 @@ section{
         .login-button{
             border: none;
             
-            width: 100%;
-            height: 3rem;
+            width: 50%;
+            height: 2.5rem;
             font-size: 15px;
             font-weight: 500;
-            margin: 1rem 10%;
+            margin-top: 1rem;
             border-radius: 5rem;
             
             color: white;
-            background-color: #223943;
+            background-color: #32a1d4;
 
         }
     }
+
 }

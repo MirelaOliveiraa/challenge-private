@@ -1,7 +1,7 @@
 import React from "react";
 import "./style/global.scss";
 import Routes from "./Routes";
-import Login from "./pages/Login";
+// import Login from "./pages/Login";
 
 const App = () => {
   return (
@@ -9,7 +9,7 @@ const App = () => {
       <div>
         <Routes />
       </div>
-      <Login />
+      {/* <Login /> */}
     </section>
   );
 };

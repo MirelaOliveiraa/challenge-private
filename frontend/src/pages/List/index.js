@@ -1,9 +1,19 @@
 import React, { useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
+import "./style.scss";
 
 import ListServices from "./service";
+import PersonIcon from "@material-ui/icons/Person";
 
 const List = () => {
   const [users, setUsers] = useState([]);
+  const history = useHistory();
+
+  const { id } = useParams();
+
+  const direct = (id) => {
+    history.push(`/user/${id}`);
+  };
 
   const listarUsers = () => {
     ListServices.list().then((response) => setUsers(response.data.data));
@@ -12,17 +22,31 @@ const List = () => {
   useEffect(() => {
     listarUsers();
   }, []);
-  return (
-    <section>
-      <div>
-        <h1>lista</h1>
 
-        <ul>
+  return (
+    <section className="section-list">
+      <ul className="list-users-ul">
+        <div className="list-users-title">
+          <PersonIcon className="list-users-icon" />
+          <span>Usuários</span>
+        </div>
+        <div className="section-card-list">
           {users.map((item) => (
-            <li>{item.first_name}</li>
+            <li className="list-users-li">
+              <div>
+                <img src={item.avatar} />
+                <div className="list-users-info">
+                  <span>
+                    {item.first_name} {item.last_name}
+                  </span>
+                  <span>{item.email}</span>
+                </div>
+              </div>
+              <button onClick={() => direct(item.id)}>Visualizar</button>
+            </li>
           ))}
-        </ul>
-      </div>
+        </div>
+      </ul>
     </section>
   );
 };
