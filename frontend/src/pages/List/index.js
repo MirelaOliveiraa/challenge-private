@@ -4,6 +4,7 @@ import "./style.scss";
 
 import ListServices from "./service";
 import PersonIcon from "@material-ui/icons/Person";
+import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
 
 const List = () => {
   const [users, setUsers] = useState([]);
@@ -13,6 +14,10 @@ const List = () => {
 
   const direct = (id) => {
     history.push(`/user/${id}`);
+  };
+
+  const login = () => {
+    history.push("/");
   };
 
   const listarUsers = () => {
@@ -27,8 +32,13 @@ const List = () => {
     <section className="section-list">
       <ul className="list-users-ul">
         <div className="list-users-title">
-          <PersonIcon className="list-users-icon" />
-          <span>Usuários</span>
+          <div>
+            <PersonIcon className="list-users-icon" />
+            <span>Usuários</span>
+          </div>
+          <button className="button-close" onClick={() => login()}>
+            <PowerSettingsNewIcon className="list-users-close" />
+          </button>
         </div>
         <div className="section-card-list">
           {users.map((item) => (

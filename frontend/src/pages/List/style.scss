@@ -24,6 +24,8 @@
             width: 115%;
             display: flex;
             align-items: center;
+            justify-content: space-between;
+
             
             margin-top: 3rem;
             padding-bottom: 0.5rem;
@@ -34,6 +36,16 @@
                 font-size: 1.8rem; 
 
                 color: #2288b8 ;
+            }
+            .button-close{
+                border-radius: 0.5rem;
+                width: 4rem;
+                height: 2.5rem;
+
+                .list-users-close{
+                    text-align: center;
+                    width: 90%;
+                }
             }
 
             span{
@@ -98,10 +110,10 @@
             border-radius: 5rem;
             letter-spacing: 1px;
             padding: 0.5rem 1.2rem;
-            
+                
             color: white;
-            background-color: #2288b8 ;
-        }
+            background-color: #32a1d4 ;
+        } 
     }
 }
 

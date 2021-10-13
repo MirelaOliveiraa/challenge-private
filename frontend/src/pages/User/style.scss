@@ -1,0 +1,59 @@
+.div-user{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    height: 100vh;
+
+    
+    .user-ul{
+        width: 40%;
+        height: 40%;
+
+        margin: 0 auto;
+        border-radius: 0.5rem;
+        
+        text-align: center;
+        
+        box-shadow: 1px 1px 10px rgb(206, 203, 203);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        
+        .user-ul-li{
+            list-style: none;
+            
+
+            img{
+                margin-bottom: 1rem;
+                border-radius: 5rem;
+            }
+
+            span:first-child{
+                font-size: 17px;
+                font-weight: 600 !important;
+            }
+            
+            span:last-child{
+                color: #494949;
+            }
+
+        }
+    }
+
+    .button-user{
+        border: none;
+            
+        width: 30%;
+        height: 2.5rem;
+        font-size: 15px;
+        font-weight: 500;
+        border-radius: 5rem;
+
+        color: white;
+        background-color: #32a1d4;
+
+        margin-top: 1rem;
+    }
+}

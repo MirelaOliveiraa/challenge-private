@@ -45,9 +45,14 @@
             font-weight: 500;
             margin-top: 1rem;
             border-radius: 5rem;
-            
+
             color: white;
             background-color: #32a1d4;
+
+        }
+
+        .login-button:hover{
+            background-color: #489ac0;
 
         }
     }

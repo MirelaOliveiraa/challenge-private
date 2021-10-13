@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
+import { Toaster, toast } from "react-hot-toast";
 
 import LoginServices from "./services";
 import "./style.scss";
@@ -19,13 +20,17 @@ const Login = () => {
       password: senha,
     };
 
-    await LoginServices.create(payload).then((response) => {
-      if (response.data.token) {
-        history.push(`/list-users/${response.data.token}`);
-      } else {
-        alert("error");
-      }
-    });
+    try {
+      await LoginServices.create(payload).then((response) => {
+        if (response.data.token) {
+          history.push(`/list-users/${response.data.token}`);
+        }
+      });
+    } catch (error) {
+      toast.error("Email ou senha incorretos.", {
+        duration: 1000,
+      });
+    }
   };
   return (
     <section className="section-login">
@@ -53,6 +58,7 @@ const Login = () => {
           Login
         </button>
       </div>
+      <Toaster />
     </section>
   );
 };
