@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import "./style.scss";
 import ListServices from "./service";
 
-import { Toaster, toast } from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import PersonIcon from "@material-ui/icons/Person";
 import SearchIcon from "@material-ui/icons/Search";
 import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
@@ -14,8 +14,6 @@ const List = () => {
   const [users, setUsers] = useState([]);
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
-
-  const { id } = useParams();
 
   const direct = (id) => {
     history.push(`/user/${id}`);
@@ -95,7 +93,6 @@ const List = () => {
           ))}
         </div>
       </ul>
-      <Toaster />
     </section>
   );
 };

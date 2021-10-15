@@ -13,19 +13,17 @@ const Login = () => {
   const history = useHistory();
 
   const Direct = async () => {
-    const { data } = await LoginServices.list();
-
     const payload = {
       email: email,
       password: senha,
     };
 
     try {
-      await LoginServices.create(payload).then((response) => {
+      LoginServices.create(payload).then((response) => {
         if (response.data.token) {
           localStorage.setItem("token", response.data.token);
 
-          history.push(`/list-users/${response.data.token}`);
+          history.push(`/list-users`);
         }
       });
     } catch (error) {
