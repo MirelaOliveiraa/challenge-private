@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import "./style.scss";
 
+import "./style.scss";
 import ListServices from "./service";
+
+import { Toaster, toast } from "react-hot-toast";
 import PersonIcon from "@material-ui/icons/Person";
+import SearchIcon from "@material-ui/icons/Search";
 import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
 
 const List = () => {
-  const [users, setUsers] = useState([]);
   const history = useHistory();
+  const [users, setUsers] = useState([]);
+  const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
 
   const { id } = useParams();
 
@@ -17,11 +22,27 @@ const List = () => {
   };
 
   const login = () => {
+    localStorage.removeItem("token");
     history.push("/");
   };
 
   const listarUsers = () => {
     ListServices.list().then((response) => setUsers(response.data.data));
+  };
+
+  const filtrar = () => {
+    if (firstName || email) {
+      const filtro = users.filter(
+        (item) => item.first_name == firstName || item.email == email
+      );
+      if (filtro.length > 0) {
+        setUsers(filtro);
+      } else {
+        toast.error("Desculpe, não encontramos essa usuario.");
+      }
+    } else {
+      listarUsers();
+    }
   };
 
   useEffect(() => {
@@ -40,6 +61,23 @@ const List = () => {
             <PowerSettingsNewIcon className="list-users-close" />
           </button>
         </div>
+        <div className="section-filter">
+          <input
+            placeholder="Nome do Usuário"
+            className="input-filter"
+            type="search"
+            onChange={(event) => setFirstName(event.target.value)}
+          />
+          <input
+            placeholder="Email do Usuário"
+            className="input-filter"
+            type="search"
+            onChange={(event) => setEmail(event.target.value)}
+          />
+          <div>
+            <SearchIcon className="icon-filter" onClick={() => filtrar()} />
+          </div>
+        </div>
         <div className="section-card-list">
           {users.map((item) => (
             <li className="list-users-li">
@@ -57,6 +95,7 @@ const List = () => {
           ))}
         </div>
       </ul>
+      <Toaster />
     </section>
   );
 };

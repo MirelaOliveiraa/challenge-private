@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
-
 import { useParams, useHistory } from "react-router-dom";
-import UserServices from "./service";
+
 import "./style.scss";
+import UserServices from "./service";
 
 const User = () => {
   const params = useParams();
   const history = useHistory();
+  const [user, setUser] = useState([]);
 
   const direct = () => {
     history.push(`/list-users/QpwL5tke4Pnpja7X4`);
   };
-
-  const [user, setUser] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -31,7 +30,6 @@ const User = () => {
               <div>
                 <span>{user.first_name + user.last_name}</span>
               </div>
-
               <span>{user.email}</span>
             </div>
             <div>

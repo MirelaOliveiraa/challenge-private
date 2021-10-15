@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
-import { Toaster, toast } from "react-hot-toast";
+import { useHistory } from "react-router-dom";
 
-import LoginServices from "./services";
 import "./style.scss";
+import LoginServices from "./services";
+
+import { Toaster, toast } from "react-hot-toast";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -13,7 +14,6 @@ const Login = () => {
 
   const Direct = async () => {
     const { data } = await LoginServices.list();
-    //console.log(data);
 
     const payload = {
       email: email,
@@ -23,15 +23,18 @@ const Login = () => {
     try {
       await LoginServices.create(payload).then((response) => {
         if (response.data.token) {
+          localStorage.setItem("token", response.data.token);
+
           history.push(`/list-users/${response.data.token}`);
         }
       });
     } catch (error) {
       toast.error("Email ou senha incorretos.", {
-        duration: 1000,
+        duration: 10000,
       });
     }
   };
+
   return (
     <section className="section-login">
       <div className="div-login">
@@ -44,7 +47,6 @@ const Login = () => {
           placeholder="Digite seu email"
           onChange={(event) => setEmail(event.target.value)}
         />
-
         <h3 className="login-h1">Senha</h3>
         <input
           className="login-input"
@@ -53,7 +55,6 @@ const Login = () => {
           placeholder="Digite sua senha"
           onChange={(event) => setSenha(event.target.value)}
         />
-
         <button className="login-button" onClick={() => Direct()}>
           Login
         </button>

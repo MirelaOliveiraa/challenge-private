@@ -7,10 +7,10 @@
     justify-content: center;
     
     .div-login{
-        margin: 0 auto;
-        
         width: 30%;
+
         padding: 5rem;
+        margin: 0 auto;        
         border-radius: 10px;
 
         background-color: white;
@@ -19,6 +19,7 @@
         .login-h1{
             margin: 1rem 0%;
         }
+        
         .login-h3{
             margin: 0;
         }
@@ -29,6 +30,7 @@
         .login-input{
             width: 100%;
             height: 1.5rem;
+        
             font-size: 14px;
             padding: 1% 1rem;
             border-radius: 6px;
@@ -37,18 +39,18 @@
         }
 
         .login-button{
-            border: none;
-            
             width: 50%;
             height: 2.5rem;
+            
             font-size: 15px;
             font-weight: 500;
+
+            border: none;
             margin-top: 1rem;
             border-radius: 5rem;
 
             color: white;
             background-color: #32a1d4;
-
         }
 
         .login-button:hover{

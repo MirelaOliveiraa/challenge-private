@@ -1,7 +1,6 @@
 import React from "react";
 import "./style/global.scss";
-import Routes from "./Routes";
-// import Login from "./pages/Login";
+import Routes from "./components/Routes";
 
 const App = () => {
   return (
@@ -9,7 +8,6 @@ const App = () => {
       <div>
         <Routes />
       </div>
-      {/* <Login /> */}
     </section>
   );
 };
