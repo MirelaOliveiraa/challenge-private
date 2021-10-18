@@ -10,7 +10,7 @@ const User = () => {
   const [user, setUser] = useState([]);
 
   const direct = () => {
-    history.push(`/list-users/QpwL5tke4Pnpja7X4`);
+    history.push(`/list-users`);
   };
 
   useEffect(() => {

@@ -29,9 +29,23 @@ const List = () => {
   };
 
   const filtrar = () => {
+    // const nomes = ["George", "Janet", "Emma", "Eve "];
+    // const filter = nomes.includes("George");
+    // console.log(filter);
+
+    // const nomes = users;
+    //const filter = users.includes(users.firstName);
+    //const filter = users.includes((item) => firstName(item.firstName));
+
+    // console.log(users.includes(users[firstName]));
+    // console.log(nomes.includes(users)); // true
+    //    const filter = nomes.includes("George");
+
     if (firstName || email) {
       const filtro = users.filter(
-        (item) => item.first_name == firstName || item.email == email
+        (item) =>
+          item.first_name.toLowerCase() == firstName.toLowerCase() ||
+          item.email.toLowerCase() == email.toLowerCase()
       );
       if (filtro.length > 0) {
         setUsers(filtro);

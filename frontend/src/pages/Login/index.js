@@ -48,7 +48,7 @@ const Login = () => {
         <h3 className="login-h1">Senha</h3>
         <input
           className="login-input"
-          type="text"
+          type="password"
           value={senha}
           placeholder="Digite sua senha"
           onChange={(event) => setSenha(event.target.value)}
