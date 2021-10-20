@@ -12,8 +12,7 @@ import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
 const List = () => {
   const history = useHistory();
   const [users, setUsers] = useState([]);
-  const [email, setEmail] = useState("");
-  const [firstName, setFirstName] = useState("");
+  const [busca, setBusca] = useState("");
 
   const direct = (id) => {
     history.push(`/user/${id}`);
@@ -29,11 +28,11 @@ const List = () => {
   };
 
   const filtrar = () => {
-    if (firstName || email) {
+    if (busca) {
       const filtro = users.filter(
         (item) =>
-          item.first_name.toLowerCase() == firstName.toLowerCase() ||
-          item.email.toLowerCase() == email.toLowerCase()
+          item.first_name.toLowerCase().indexOf(busca.toLowerCase()) !== -1 ||
+          item.email.toLowerCase().indexOf(busca.toLowerCase()) !== -1
       );
       if (filtro.length > 0) {
         setUsers(filtro);
@@ -63,16 +62,11 @@ const List = () => {
         </div>
         <div className="section-filter">
           <input
-            placeholder="Nome do Usuário"
+            placeholder="Nome ou Email"
             className="input-filter"
             type="search"
-            onChange={(event) => setFirstName(event.target.value)}
-          />
-          <input
-            placeholder="Email do Usuário"
-            className="input-filter"
-            type="search"
-            onChange={(event) => setEmail(event.target.value)}
+            value={busca}
+            onChange={(event) => setBusca(event.target.value)}
           />
           <div>
             <SearchIcon className="icon-filter" onClick={() => filtrar()} />

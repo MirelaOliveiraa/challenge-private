@@ -7,7 +7,7 @@ import UserServices from "./service";
 const User = () => {
   const params = useParams();
   const history = useHistory();
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState(null);
 
   const direct = () => {
     history.push(`/list-users`);
@@ -18,7 +18,11 @@ const User = () => {
       const response = await UserServices.list(params.id);
       setUser(response.data.data);
     })();
-  }, []);
+  }, [params.id]);
+
+  if (!user) {
+    return null;
+  }
 
   return (
     <section>
